@@ -6,7 +6,7 @@
 import os, re, random, types, functools
 
 # Settings 
-CMU_DIR = './CMU_dictionary' 
+CMU_DIR = './util/syllabify/CMU_dictionary' 
 # Version 
 VERSION = 'cmudict.0.7a'
 # Path

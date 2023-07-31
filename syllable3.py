@@ -2,9 +2,9 @@
 ## apart from print statements this involves: functools.reduce() and list(x) to get len() of map object
 
 import re, copy, sys, random, functools
-from cmuparser3 import CMUtranscribe  # import Py3 version
-from syllable_types3 import Cluster, Consonant, Vowel, Empty, Rime, Syllable  # import Py3 version
-from phoneme_types import * 
+from .cmuparser3 import CMUtranscribe  # import Py3 version
+from .syllable_types3 import Cluster, Consonant, Vowel, Empty, Rime, Syllable  # import Py3 version
+from .phoneme_types import * 
 
 phoneme_classify = re.compile('''
                         ((?P<Vowel>AO|UW|EH|AH|AA|IY|IH|UH|AE|AW|AY|ER|EY|OW|OY)
@@ -354,6 +354,19 @@ def generate(word):
 
 def get_raw(word):
     return CMUtranscribe(word)
+
+
+def run(graph):
+    graph = graph.split()
+    syllables = []
+    for word in graph:
+        syllable = generate(word.rstrip())
+        if syllable:
+            for syll in syllable:
+                for s in syll:
+                    syllables.append(s)
+
+    return syllables
 
 
 if __name__ == '__main__':
